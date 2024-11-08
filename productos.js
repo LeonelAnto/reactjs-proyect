@@ -45,10 +45,9 @@ const productos = new Promise ((resolve, reject) => {
 productos
 .then(
     (response) => {
-        console.log("obtenidos");
-        console.log(response);
+        
     }
 )
 .catch ((error) => {
-    console.error ("Error", error)
+    
 })

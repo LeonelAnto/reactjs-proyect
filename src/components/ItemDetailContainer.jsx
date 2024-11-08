@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react'
-import mockProducts from '../assets/mockData.json'
 import ItemDetail from './ItemDetail'
 import { useParams } from 'react-router-dom'
+import { doc, getDoc } from 'firebase/firestore'
+import { db } from '../firebase/config'
 
 const ItemDetailContainer = () => {
   const [product, setProducts] = useState(null);
@@ -9,10 +10,29 @@ const ItemDetailContainer = () => {
 
 
   useEffect(() => {
-      const producto = mockProducts.find(productToFind => productToFind.id === Number(id))
-      console.log("id encontrado");
-      setProducts(producto)
-    
+      
+    (async ()=>{
+      
+      try {
+        const docRef = doc(db, "products", id);
+        const docSnap = await getDoc(docRef);
+
+        if (docSnap.exists()) {
+        
+          setProducts({...docSnap.data(), id})
+        } else {
+        
+}
+
+
+
+      } catch (error) {
+        
+      }
+
+
+
+    })()
     }, [id]
   )
   

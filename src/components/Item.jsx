@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom'
 
 const Item = ({item}) => {
   return (
-    <div>
-      <img src={item.img} />
+    <div id='card'>
+      <img id='img' src={item.img} />
       <h2>{item.model}</h2>
       <span>{item.type}</span>
       <span>${item.cost}</span>
